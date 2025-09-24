@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">  
+<head>  
+  <!-- Metadatos importantes para el charset y la visualización en dispositivos móviles -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Título de la página que se muestra en la pestaña del navegador -->
+ <title>Transferencias</title>
+
+  <link rel="stylesheet" href="../style/style_tranferencias.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+     <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+  <!-- Script de validación que se carga de forma diferida -->
+  <script src="js/validacionTrapasos.js" defer></script>
+</head> 
+<body>  
+  <!-- Encabezado de la página, incluye el logo y el menú de navegación -->
+  <header class="main-header">
+    <div class="header-left">
+      <img src="/images/logo-banco-azteca-mob.png" alt="Banco Azteca" class="logoI">
+      <div class="marca">BANCO AZTECA</div>
+    </div>
+
+    <nav class="nav-menu" id="navMenu">
+      <a href="../../index.html">inicio</a>
+      <a href="./traspasos_y_tranferencias.html">Transferencias</a>
+      <a href="./ordenes_de_pago_empresarial.html">Órdenes de pago empresarial</a>
+      <a href="./cancelacion_de_ordenes_de_pago_empresarial.html">Cancelación de órdenes de pago empresaria</a>
+    </nav>
+
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  </header>
+
+  <!-- Contenedor del formulario donde se ingresan los datos para generar el archivo -->
+  <div class="contenedor-principal">
+
+ <div class="contenedor-izquierdo">
+    <!-- Formulario donde se ingresan los datos -->
+    <form class="form-body" onsubmit="return validarFormulariotrapasos(event)">
+      <!-- Campo para el identificador del archivo -->
+             <h2>Transferencia</h2>
+      <p>Este formulario está diseñado para crear la estructura de un .txt</p>
+      <br>
+      <div class="form-group">
+        <label for="secuencia"> <span class="obligatorio"> <span class="obligatorio">*</span> </span> Secuencia:</label>
+        <input type="text" id="secuencia"  placeholder="p.j. &quot;01&quot;"  class="form-input">
+      </div>
+
+      <!-- Campo para el ID de la empresa -->
+      <div class="form-group">
+        <label for="fecha_de_generacion"> <span class="obligatorio"> <span class="obligatorio">*</span> </span> Fecha de generación:</label>
+        <input type="date" id="fecha_de_generacion"  onchange="formatearFecha()"   class="form-input">
+          <!-- Campo oculto para guardar la fecha formateada -->
+        <input type="hidden" id="fechaFormateada" name="fechaFormateada">
+              </div>
+
+      <div class="form-group">
+        <label for="servicio"> <span class="obligatorio"> <span class="obligatorio">*</span> </span> Servicio:</label>
+        <input type="text" id="servicio" value="02"    readonly class="form-input">
+      </div>
+
+      <div class="form-group"> 
+        <label for="tipo_de_cuenta"> <span class="obligatorio"> <span class="obligatorio">*</span> </span> Tipo de cuenta:</label>
+        <input type="text" id="tipo_de_cuenta" value="01"   readonly class="form-input"> 
+      </div>
+
+      <div class="form-group">
+        <label for="no_cuenta_cargo"> <span class="obligatorio"> <span class="obligatorio">*</span> </span> No. Cuenta cargo:</label>
+        <input type="text" id="no_cuenta_cargo" maxlength="20" placeholder="p.j. &quot;01270172780102030405&quot;"   class="form-input">
+      </div>
+
+      <div class="form-group">
+        <label for="titular_de_cuenta_cargo"> <span class="obligatorio"> <span class="obligatorio">*</span> </span> Titular de cuenta cargo:</label>
+        <input type="text" id="titular_de_cuenta_cargo" maxlength="40" placeholder="p.j. &quot;EMPRESA PLUG AND PLAY 2&quot;"    class="form-input">
+      </div>
+
+      <div class="form-group">
+        <label for="rfc_del_ordenante"> <span class="obligatorio"> <span class="obligatorio">*</span> </span> RFC del Ordenante:</label>
+        <input type="text" id="rfc_del_ordenante" maxlength="18" placeholder="p.j. &quot;PUG020101GH3&quot;"    class="form-input">
+      </div>
+      <div class="form-group">
+        <label for="leyenda_cargo"> <span class="obligatorio"> <span class="obligatorio">*</span> </span> Leyenda Cargo:</label>
+        <input type="text" id="leyenda_cargo" maxlength="30" placeholder="p.j. &quot;PRUEBA DE CARGO II&quot;"   class="form-input">
+      </div>
+      <div class="form-group"> 
+        <label for="importe"> <span class="obligatorio"> <span class="obligatorio">*</span> </span> Importe:</label>
+        <input type="text" id="importe" maxlength="15" placeholder="p.j. &quot;01&quot;"   class="form-input">
+      </div>
+      <div class="form-group">
+        <label for="moneda"> <span class="obligatorio"> <span class="obligatorio">*</span> </span> Moneda:</label>
+        <input type="text" id="moneda" value="MXP"    readonly class="form-input" >
+      
+      </div>
+      
+     <div class="form-group">
+  <label for="banco_receptor">
+    <span class="obligatorio"><span class="obligatorio">*</span></span> Banco Receptor:
+  </label>
+  <br>
+<br>
+  <select id="banco_receptor" class="form-input">
+    <option value="000">Selecciona una opción</option>
+    <option value="133">ACTINVER</option>
+    <option value="062">AFIRME</option>
+    <option value="706">ARCUS FI</option>
+    <option value="659">ASP INTEGRA OPC</option>
+    <option value="128">AUTOFIN</option>
+    <option value="127">AZTECA</option>
+    <option value="166">BaBien</option>
+    <option value="030">BAJIO</option>
+    <option value="002">BANAMEX</option>
+    <option value="154">BANCO COVALTO</option>
+    <option value="006">BANCOMEXT</option>
+    <option value="137">BANCOPPEL</option>
+    <option value="160">BANCO S3</option>
+    <option value="152">BANCREA</option>
+    <option value="019">BANJERCITO</option>
+    <option value="147">BANKAOOL</option>
+    <option value="106">BANK OF AMERICA</option>
+    <option value="159">BANK OF CHINA</option>
+    <option value="009">BANOBRAS</option>
+    <option value="072">BANORTE</option>
+    <option value="058">BANREGIO</option>
+    <option value="060">BANSI</option>
+    <option value="001">BANXICO</option>
+    <option value="129">BARCLAYS</option>
+    <option value="145">BBASE</option>
+    <option value="012">BBVA MEXICO</option>
+    <option value="112">BMONEX</option>
+    <option value="721">albo</option>
+    <option value="677">CAJA POP MEXICA</option>
+    <option value="683">CAJA TELEFONIST</option>
+    <option value="715">Cartera Digital</option>
+    <option value="630">CB INTERCAM</option>
+    <option value="143">CIBANCO</option>
+    <option value="631">CI BOLSA</option>
+    <option value="124">CITI MEXICO</option>
+    <option value="901">CLS</option>
+    <option value="903">CoDi Valida</option>
+    <option value="130">COMPARTAMOS</option>
+    <option value="140">CONSUBANCO</option>
+    <option value="652">CREDICAPITAL</option>
+    <option value="688">CREDICLUB</option>
+    <option value="680">CRISTOBAL COLON</option>
+    <option value="723">Cuenca</option>
+    <option value="151">DONDE</option>
+    <option value="616">FINAMEX</option>
+    <option value="634">FINCOMUN</option>
+    <option value="734">FINCO PAY</option>
+    <option value="689">FOMPED</option>
+    <option value="699">FONDEADORA</option>
+    <option value="685">FONDO (FIRA)</option>
+    <option value="601">GBM</option>
+    <option value="167">HEY BANCO</option>
+    <option value="168">HIPOTECARIA FED</option>
+    <option value="021">HSBC</option>
+    <option value="155">ICBC</option>
+    <option value="036">INBURSA</option>
+    <option value="902">INDEVAL</option>
+    <option value="150">INMOBILIARIO</option>
+    <option value="136">INTERCAM BANCO</option>
+    <option value="059">INVEX</option>
+    <option value="110">JP MORGAN</option>
+    <option value="661">KLAR</option>
+    <option value="653">KUSPIT</option>
+    <option value="670">LIBERTAD</option>
+    <option value="602">MASARI</option>
+    <option value="722">Mercado Pago W</option>
+    <option value="042">MIFEL</option>
+    <option value="158">MIZUHO BANK</option>
+    <option value="600">MONEXCB</option>
+    <option value="108">MUFG</option>
+    <option value="132">MULTIVA BANCO</option>
+    <option value="135">NAFIN</option>
+    <option value="638">NU MEXICO</option>
+    <option value="710">NVIO</option>
+    <option value="148">PAGATODO</option>
+    <option value="732">Peibo</option>
+    <option value="620">PROFUTURO</option>
+    <option value="156">SABADELL</option>
+    <option value="014">SANTANDER</option>
+    <option value="044">SCOTIABANK</option>
+    <option value="157">SHINHAN</option>
+    <option value="728">SPIN BY OXXO</option>
+    <option value="646">STP</option>
+    <option value="703">TESORED</option>
+    <option value="684">TRANSFER</option>
+    <option value="138">UALA</option>
+    <option value="656">UNAGRA</option>
+    <option value="617">VALMEX</option>
+    <option value="605">VALUE</option>
+    <option value="608">VECTOR</option>
+    <option value="113">VE POR MAS</option>
+    <option value="141">VOLKSWAGEN</option>
+  </select>
+
+  <!-- Título desplegable -->
+  <h3 class="desplegable" onclick="toggleFormulario()">
+    <span id="flecha">➤</span> Agregar nuevo banco
+  </h3>
+
+  <!-- Contenido oculto -->
+  <div id="formAgregarBanco" class="contenido-desplegable">
+    <label class="form-linea" for="clave">Clave:</label>
+    <input class="form-linea" type="text" id="clave" placeholder="Ej: 999" maxlength="3" pattern="\d*" oninput="validarNumeros(this)">
+
+    <label class="form-linea" for="nombre">Nombre del banco:</label>
+    <input class="form-linea" type="text" id="nombre" placeholder="Ej: BANCO NUEVO">
+    <div class="form-actions">
+    <button type="submit2" onclick="agregarBanco()">Agregar</button>
+    </div>
+  </div>
+    </div>
+
+
+      <div class="form-group">
+        <label for="tipo_de_cuenta_beneficiario"> <span class="obligatorio"> <span class="obligatorio">*</span> </span> Tipo de Cuenta Beneficiario:</label>
+        <select id="tipo_de_cuenta_beneficiario" class="form-input" >
+          <option value="00"> Selecciona una opcion               </option>
+          <option value="01"> Mismo banco (propias y terceros)    </option>
+          <option value="03">Tarjeta débito                       </option> 
+          <option value="40">Cuenta Clabe                         </option>
+        </select>   
+      </div>
+
+      <div class="form-group">
+        <label for="numero_de_cuenta_beneficiario"> <span class="obligatorio"> <span class="obligatorio">*</span> </span> Número de Cuenta  Beneficiario:</label>
+        <input type="text" id="numero_de_cuenta_beneficiario" maxlength="20" placeholder="p.j. &quot;01270172780102030405&quot;"   class="form-input">
+      </div>
+
+      <div class="form-group">
+        <label for="nombre_del_beneficiario"> <span class="obligatorio"> <span class="obligatorio">*</span> </span> Nombre del Beneficiario:</label>
+        <input type="text" id="nombre_del_beneficiario" maxlength="40" placeholder="p.j. &quot;EMPRESA PLAY SIGLO XX&quot;"   class="form-input"> 
+      </div>
+<div class="form-group">
+  <label for="leyenda_abono">
+    <span class="obligatorio">*</span> Leyenda Abono:
+  </label>
+  <input type="text" id="leyenda_abono" name="leyenda_abono" maxlength="30" placeholder='p.j. "PRUEBA DE ABONO BAZ BAZ"' class="form-input" required>
+</div>
+
+<div class="form-group">
+  <label for="rfc_del_beneficiario">RFC del Beneficiario:</label>
+  <input type="text" id="rfc_del_beneficiario" name="rfc_del_beneficiario" maxlength="18" placeholder='p.j. "PUG020101GH3"' class="form-input">
+</div>
+
+<div class="form-group">
+  <label for="iva">IVA:</label>
+  <input type="text" id="iva" name="iva" maxlength="2" placeholder='p.j. "00"' class="form-input">
+</div>
+
+<div class="form-group">
+  <label for="referencia_de_cobranza">Referencia de Cobranza:</label>
+  <input type="text" id="referencia_de_cobranza" name="referencia_de_cobranza" maxlength="40" placeholder='p.j. "PRUEBA DE COBRANZA I"' class="form-input">
+</div>
+
+<input type="hidden" id="clave" name="clave" maxlength="12" placeholder="Espacios" value="" readonly class="form-input">
+
+<div class="form-group">
+  <label for="tipo_de_pago">
+    <span class="obligatorio">*</span> Tipo de Pago:
+  </label>
+  <select id="tipo_de_pago" name="tipo_de_pago" class="form-input" required>
+    <option value="00">Selecciona una opción</option>
+    <option value="01">SPEI</option>
+    <option value="02">TEF</option>
+    <option value="03">Mismo banco</option>
+  </select>
+</div>
+
+<input type="hidden" id="filler" name="filler" maxlength="40" placeholder="Espacios" value="" readonly class="form-input">
+
+<!-- Botón para enviar el formulario -->
+<div class="form-actions1">
+  <button type="button" id="btn_Nuevo_registro">Guardar registro</button>
+  
+</div>
+
+
+    </form>
+
+    </div>
+
+        <div class="form-container">
+      <div class="preview-container">
+        <div class="preview-header">
+    <span class="info-icon" title="Este cuadro muestra una vista previa de la estructura del archivo.">i</span>
+        <h3>Aquí se mostrará el diseño de la estructura del archivo:</h3>
+        </div>
+        <!-- Caja que mostrará la vista previa del nombre del archivo generado -->
+  <pre id="previewArchivo" class="preview-box">Aquí se mostrará el diseño de la estructura del archivo</pre>
+
+
+      </div>
+       <div class="preview-container2">
+          <label for="cantidad_de_registros">Cantidad de registros:</label>
+          <input type="number" id="cantidad_de_registros" name="cantidad_de_registros" min="1" value="1" class="form-input">
+  </div>
+       <div class="form-actions">
+          <button type="submit" id="btn_Insertar">Insertar Registros</button>
+<select id="formato_descarga">
+  <option disabled selected>Descargar archivo</option>
+  <option value="txt">.TXT</option>
+  <option value="excel">.EXCEL</option>
+</select>
+          
+
+       </div>
+    </div>
+    
+  </div>
+<!-- Pie de página -->
+<footer class="main-footer">
+  <p>&copy; Canales Digitales H2H</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es"> 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cancelación de órdenes de pago empresaria</title>
+
+    <link rel="stylesheet" href="../style/style_cancelacion.css">
+
+  <!-- Script de validación que se carga de forma diferida -->
+  <script src="js/validacionCancelacion.js" defer></script>
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+</head>
+<body> 
+  <header class="main-header">
+    <div class="header-left">
+      <img src="/images/logo-banco-azteca-mob.png" alt="Banco Azteca" class="logoI">
+      <div class="marca">BANCO AZTECA</div>
+    </div>                 
+                                
+    <nav class="nav-menu" id="navMenu">
+      <a href="../../index.html">inicio</a>
+      <a href="./traspasos_y_tranferencias.html">Transferencias</a>
+      <a href="./ordenes_de_pago_empresarial.html">Órdenes de pago empresarial</a>
+      <a href="./cancelacion_de_ordenes_de_pago_empresarial.html">Cancelación de órdenes de pago empresaria</a>
+    </nav>
+
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  </header>
+
+  <!-- Contenedor del formulario donde se ingresan los datos para generar el archivo -->
+   <div class="contenedor-principal">
+
+    <div class="contenedor-izquierdo">
+      <!-- Formulario donde se ingresan los datos -->
+   <form class="form-body" onsubmit="return false;">
+      <!-- Campo para el identificador del archivo -->
+             <h2>Cancelación de órdenes de pago empresaria</h2>
+             
+      <p>Este formulario está diseñado para crear la estructura de un .txt </p>
+      <br>
+
+      <div class="form-group">
+          <label for="referencia">  <span class="obligatorio">*</span> Referencia:</label>
+          <input type="text" id="referencia" maxlength="35" placeholder="p.j. &quot;ABC123&quot;"   class="form-input" >
+      </div>
+
+      <!-- Campo para el ID de la empresa -->
+      <div class="form-group" class="obligatorio">
+        <label for="nombre"> <span class="obligatorio">*</span> Nombre completo:</label>
+          <input type="text" id="nombre" maxlength="60"  placeholder=" p.j. &quot;IVAN&quot;"   class="form-input" >
+        </div>
+        <!-- Botón para enviar el formulario -->
+<div class="form-actions1">
+    <button type="button" id="btn_Nuevo_registro">Guardar registro</button>
+  
+</div>
+   <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+   
+    </div>
+
+        <div class="form-container">
+
+      
+      <!-- Contenedor para la vista previa del nombre del archivo -->
+      <div class="preview-container">
+        <div class="preview-header">
+            <span class="info-icon" title="Este cuadro muestra una vista previa de la estructura del archivo.">i</span>
+
+        <h3>Vista previa del contenido del archivo del archivo:</h3>
+        </div>
+        <!-- Caja que mostrará la vista previa del nombre del archivo generado -->
+        <ul id="previewArchivo" class="preview-box">Aquí se mostrará el diseño de la estructura del archivo</ul>
+      </div> 
+
+      <div class="form-actions3">
+  
+<select id="formato_descarga_cancelacion">
+  <option disabled selected>Descargar archivo</option>
+  <option value="txt">.TXT</option>
+  <option value="excel">.EXCEL</option>
+</select>
+      </div>
+      
+    </div>
+     </form>
+
+
+  </div>
+<!-- Pie de página -->
+<footer class="main-footer">
+  <p>&copy; Canales Digitales H2H</p>
+</footer>
+
+<script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+</body>
+</html>
+

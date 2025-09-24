@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es"> 
+<head>  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOMENCLATURA DEL ARCHIVO</title>
+
+  <link rel="stylesheet" href="../style/style_nomenclatura.css">
+  <script src="./js/nomenclatura/index.js" type="module"></script>
+</head>
+<body> 
+
+  <header class="main-header">
+    <div class="header-left">
+      <img src="/images/logo-banco-azteca-mob.png" alt="Banco Azteca" class="logoI">
+      <div class="marca">BANCO AZTECA</div>
+    </div>
+
+    <nav class="nav-menu" id="navMenu">
+      <a href="../../index.html">inicio</a>
+      <a href="./traspasos_y_tranferencias.html">Transferencias</a>
+      <a href="./ordenes_de_pago_empresarial.html">Órdenes de pago empresarial</a>
+      <a href="./cancelacion_de_ordenes_de_pago_empresarial.html">Cancelación de órdenes de pago empresaria</a>
+    </nav>
+
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  </header>
+
+  <div class="contenedor-principal">
+
+    <!-- Formulario (izquierda) -->
+    <div class="contenedor-izquierdo">
+      <form class="form-body" onsubmit="return validarFormularioNomenglatura(event)">
+      <h2>Paso 1. Nomenclatura del archivo</h2>
+      <p>Ingresa la informacion requerida para crear un archivo .txt</p>
+      <br>
+        <div class="form-group">
+          <label for="identificador"> <span class="obligatorio">*</span> Identificador:</label>
+          <input type="text" id="identificador" maxlength="2" placeholder='p.j. "02"' required class="form-input">
+        </div>
+
+        <div class="form-group">
+          <label for="idEmpresa"> <span class="obligatorio">*</span> ID Empresa:</label>
+          <input type="text" id="idEmpresa" maxlength="9" placeholder='p.j. "5436"' required class="form-input">
+        </div>
+
+        <div class="form-group">
+          <label for="fecha"> <span class="obligatorio">*</span> Fecha:</label>
+          <input type="date" id="fecha" required class="form-input">
+          <input type="text" id="fechaFormateada" style="display: none;">
+        </div>
+
+        <div class="form-group">
+          <label for="identificador_del_servicio"> <span class="obligatorio">*</span> Identificador del servicio:</label>
+          <input type="text" id="identificador_del_servicio" value="30" readonly class="form-input">
+        </div>
+
+        <div class="form-group">
+          <label for="consecutivo"> <span class="obligatorio">*</span> Consecutivo:</label>
+          <input type="text" id="consecutivo" maxlength="4" placeholder='p.j. "1"' required class="form-input">
+        </div>
+
+     
+     
+    </div>
+
+    <!-- Vista previa (derecha) -->
+    <div class="form-container">
+
+      
+      <div class="preview-container">
+          <div class="preview-header">
+            <span class="info-icon" title="Este cuadro muestra una vista previa de la estructura del archivo.">i</span>
+        <h3>Vista previa del nombre del archivo:</h3>
+          </div>
+        <pre id="previewArchivo" class="preview-box">Aquí se mostrará el nombre del archivo.txt</pre>
+      </div>
+         <div class="form-actions">
+          <button type="submit" id="btnSiguiente">SIGUIENTE</button>
+        </div>
+    </div>
+    
+ </form>
+  </div>
+
+  <footer class="main-footer">
+    <p>&copy; Canales Digitales H2H</p>
+  </footer>
+
+</body>
+</html>

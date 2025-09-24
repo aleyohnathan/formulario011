@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">  
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Órdenes de pago empresarial</title>
+  <link rel="stylesheet" href="../style/style_ordenes.css">
+  <script src="js/validacionOrdenes.js" defer></script>
+</head> 
+<body>   
+  <header class="main-header">
+    <div class="header-left">
+      <img src="/images/logo-banco-azteca-mob.png" alt="Banco Azteca" class="logoI">
+      <div class="marca">BANCO AZTECA</div>
+    </div>
+
+    <nav class="nav-menu" id="navMenu">
+      <a href="../../index.html">inicio</a>
+      <a href="./traspasos_y_tranferencias.html">Transferencias</a>
+      <a href="./ordenes_de_pago_empresarial.html">Órdenes de pago empresarial</a>
+      <a href="./cancelacion_de_ordenes_de_pago_empresarial.html">Cancelación de órdenes de pago empresaria</a>
+    </nav>
+
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  </header>
+ 
+  <div class="contenedor-principal">
+
+  <div class="contenedor-izquierdo">
+    <form class="form-body" onsubmit="return validarFormularioOrdenes(event)">
+            <h2>Órdenes de pago empresarial</h2>
+      <p>Este formulario está diseñado para crear la estructura de un .txt </p>
+      <div class="form-group">
+        
+        <label for="importe"><span class="obligatorio">*</span> Importe:</label>
+        <input type="text" id="importe" placeholder='p.j. "100"' class="form-input">
+      </div>
+
+      <div class="form-group">
+        <label for="primer_apellido"><span class="obligatorio">*</span> Primer Apellido:</label>
+        <input type="text" id="primer_apellido" placeholder='p.j. "SILVA"' class="form-input" maxlength="20">
+      </div>
+
+      <div class="form-group">
+        <label for="segundo_apellido"><span class="obligatorio">*</span> Segundo Apellido:</label>
+        <input type="text" id="segundo_apellido" placeholder='p.j. "BARRERA"' class="form-input" maxlength="20">
+      </div>
+
+      <div class="form-group">
+        <label for="nombre"><span class="obligatorio">*</span> Nombre:</label>
+        <input type="text" id="nombre" placeholder='p.j. "IVAN"' class="form-input" maxlength="20">
+      </div>
+
+      <div class="form-group"> 
+        <label for="referencia"><span class="obligatorio">*</span> Referencia:</label>
+        <input type="text" id="referencia" placeholder='p.j. "ABC123"' class="form-input" maxlength="35" value="00001TEST">
+        <div class="leyenda">
+          <strong>Nota:</strong> Debes tomar en cuenta lo siguiente:
+          <ul>
+            <li>La frase no debe ser más grande que 30 caracteres de longitud.</li>
+            <li>El número debe tener formato de 5 dígitos, p.j.: 00001.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="Tipo_de_dentificacion"><span class="obligatorio">*</span> Tipo de Identificación:</label>
+        <select id="Tipo_de_dentificacion" class="form-input">
+          <option value="0">Selecciona una opción</option>
+          <option value="1">Credencial de Elector</option>
+          <option value="2">Pasaporte</option>
+        </select>  
+      </div>
+     
+      <div class="form-group">
+        <label for="fecha_de_vigencia">Fecha de vigencia:</label>
+        <input type="date" id="fecha_de_vigencia" onchange="formatearFecha()" class="form-input">
+        <input type="hidden" id="fechaFormateada" name="fechaFormateada">
+      </div>
+
+      <div class="form-group">
+        <label for="celular">Celular:</label>
+        <input type="number" id="celular" placeholder='p.j. "5535318036"' class="form-input">
+      </div>
+
+      <div class="form-group">
+        <label for="correo_electronico">Correo electrónico:</label>
+        <input type="email" id="correo_electronico" placeholder='p.j. "persona@gmail.com"' class="form-input">
+      </div>
+
+      <div class="form-actions1">
+        <button type="button" id="btn_Nuevo_registro">Guardar registro</button>
+   
+      </div>
+    </form>
+ 
+      </div>
+
+
+        <div class="form-container">
+          <div class="preview-container">
+              <div class="preview-header">
+                     <span class="info-icon" title="Este cuadro muestra una vista previa de la estructura del archivo.">i</span>
+                      <h3>Vista previa del contenido del archivo</h3>
+            </div>
+                  <pre id="previewArchivo" class="preview-box">Aquí se mostrará el diseño de la estructura del archivo</pre>
+            </div>
+
+
+      <div class="preview-container2">
+        <label for="cantidad_de_registros">Cantidad de registros:</label>
+        <input type="number" id="cantidad_de_registros" name="cantidad_de_registros" min="1" value="1" class="form-input">
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" id="btn_Insertar">Insertar Registros</button>
+
+   
+    
+      <select id="formato_descarga">
+        <option disabled selected>Descargar archivo</option>
+        <option value="txt">.TXT</option>
+        <option value="excel">.EXCEL</option>
+      </select>
+      
+    </div>
+      
+    </div>
+    
+
+
+  </div>
+
+  <footer class="main-footer">
+    <p>&copy; Canales Digitales H2H</p>
+  </footer>
+  <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+</body>
+</html>

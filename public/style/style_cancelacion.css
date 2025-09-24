@@ -1,0 +1,293 @@
+.main-header {
+  display: flex;
+  justify-content: space-between; /* Separa izquierda y derecha */
+  align-items: center;
+  background-color: #ffffff;
+  padding: 15px 20px;
+  font-family: 'Roboto', sans-serif;
+   box-shadow: 0 7px 4px rgba(0, 0, 0, 0.15);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-left img {
+  height: 40px; /* Ajusta según necesites */
+  margin-right: 10px;
+}
+.nav-menu {
+  display: none;
+  flex-direction: column;
+  background-color: #cecece; 
+  position: absolute;
+  top: 60px; /* Debajo del header */
+  right: 0;
+  width: 270px;
+  padding: 30px 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  font-weight: 600;
+  font-size: 16px;
+  z-index: 1000;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: top right;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav-menu.active,
+.nav-menu.show {
+  display: flex;
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+.nav-menu a {
+  color: #000000; /* Verde claro para el texto */
+  text-decoration: none;
+  margin: 10px 0;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-menu a:hover {
+  background-color: #19a12f; /* Verde neón más brillante al hover */
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.menu-toggle {
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #0b4d23; /* Mismo verde fuerte para el botón */
+  transition: color 0.3s ease;
+}
+
+.menu-toggle:hover {
+  color: #19a12f;
+}
+
+
+/* Responsive */
+@media (max-width: 600px) {
+  .nav-menu {
+    width: 180px;
+    top: 60px;
+    right: 0;
+    background-color: #0b4d23;
+  }
+}
+
+.marca {
+    font-size: 20px;
+    color: #7a7a7a;
+    font-weight: bold;
+    margin: 0;
+}
+
+
+.contenedor-principal {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+    position: relative;
+}
+
+/* Contenedor izquierdo (Formulario) */
+.contenedor-izquierdo {
+  width: 50%;               /* Ancho del contenedor izquierdo (ajústalo según prefieras) */
+  padding: 40px;            /* Espacio interno: controla qué tan "separado" está el contenido de sus bordes */
+  margin-top: 0px;          /* Qué tan separado queda desde la parte superior */
+  margin-left: 0px;         /* Qué tan separado queda desde la izquierda */
+  /* Usa margin-right o margin-bottom si necesitas moverlo hacia otros lados */
+  
+
+}
+
+/* Contenedor derecho (Vista previa) */
+.form-container {
+  width: 56%;               /* Ancho del contenedor derecho */
+  padding: 15px;            /* Espacio interno para controlar el contenido */
+
+  margin-top: 110px;          /* Qué tan abajo o arriba se ubica */
+  margin-right: 0px;        /* Qué tan separado queda del borde derecho */
+}
+
+
+
+.form-group {
+  background-color: #ffffff;
+  padding: 20px 25px;
+  border-radius: 8px;
+  box-shadow: 0 7px 4px rgba(0, 0, 0, 0.15);
+  margin-bottom: 20px;
+  
+}
+
+
+.form-input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  border-color: #1a73e8;
+  outline: none;
+  box-shadow: 0 0 0 1px #1a73e8;
+}
+
+
+.form-actions1 {
+
+  
+  display: flex;
+  justify-content: right; /* Envía uno a la izquierda y otro a la derecha */
+  align-items: center; /* Alineación vertical si es necesario */
+  width: 100%; /* O un ancho fijo si prefieres */
+  margin-top: 20px;          /* Qué tan abajo o arriba se ubica */
+    
+  
+}
+.form-actions3 {
+
+  
+  display: flex;
+  justify-content: right; /* Envía uno a la izquierda y otro a la derecha */
+  align-items: center; /* Alineación vertical si es necesario */
+  width: 92%; /* O un ancho fijo si prefieres */
+  margin-top: 20px;          /* Qué tan abajo o arriba se ubica */
+    
+  
+}
+
+
+
+button[type="submit1"] {
+
+
+  background-color: #ffffff;
+  color: rgb(22, 118, 0);
+  border: 2px solid rgb(22, 118, 0); /* Borde verde */
+  padding: 8px 24px;
+  border-radius: 20px;
+  font-size: 14px;
+    cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="button"] {
+  background-color: #00932c;
+  color: white;
+  border: none;
+  padding: 9px 24px;
+  border-radius: 20px;
+  font-size: 14px;
+    cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+.main-footer {
+  background-color: #00932c;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  background-color: #efefef;
+}
+
+
+.preview-container {
+  margin-top: 40px;
+  padding: 15px 20px;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 85%;
+  max-width: 600px;
+}
+
+.preview-box {
+  font-family: monospace;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #dadce0;
+  white-space: pre;           /* mantiene los espacios y saltos de línea */
+  overflow-x: auto;           /* scroll horizontal si es necesario */
+  overflow-y: auto;           /* scroll vertical si excede la altura */
+  display: block;
+  width: 490px;               /* ancho fijo o ajústalo según lo necesites */
+  max-height: 600px;          /* altura máxima que deseas */
+}
+
+  .registro-item.selected {
+  background-color: #d2eaff;
+  font-weight: bold;
+}
+
+.obligatorio {
+  color: red;
+  font-weight: bold;
+}
+    .preview-container {
+    border-bottom: 3px solid #00932c;
+}
+
+.preview-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.info-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border: 2px solid #4CAF50;
+  color: #4CAF50;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  cursor: default;
+  font-size: 14px;
+}
+
+.info-icon:hover {
+  background-color: #4CAF50;
+  color: #ffffff;
+}
+#formato_descarga_cancelacion {
+    background-color: #ffffff;
+    color: rgb(0, 116, 35);
+    border: none;
+    padding: 9px 24px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  
+    
+  }

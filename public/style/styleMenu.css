@@ -1,0 +1,171 @@
+/* Estructura para que el footer siempre esté abajo */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+    background-color: #efefef;
+}
+
+body {
+  flex: 1; /* Permite al body ocupar todo el alto disponible */
+  display: flex;
+  flex-direction: column;
+}
+
+main.contenedor {
+  flex: 1; /* Esto hace que el main ocupe el espacio disponible */
+  width: 45%;
+  max-width: 1400px;
+  margin: 40px auto;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  padding: 36px 20px;
+  display: flex;
+  flex-direction: column; /* Si tu contenido interno lo necesita */
+}
+
+/* Header */
+.main-header {
+  display: flex;
+  justify-content: space-between; /* Separa izquierda y derecha */
+  align-items: center;
+  background-color: #ffffff;
+  padding: 15px 20px;
+  font-family: 'Roboto', sans-serif;
+   box-shadow: 0 7px 4px rgba(0, 0, 0, 0.15);
+}
+
+
+.marca {
+    font-size: 20px;
+    color: #7a7a7a;
+    font-weight: bold;
+    margin: 0;
+}
+
+.logo-img {
+  height: 40px;
+}
+.header-left {
+  display: flex;
+  align-items: center;
+}
+.header-left img {
+  height: 40px; /* Ajusta según necesites */
+  margin-right: 10px;
+}
+.nav-menu {
+  display: none;
+  flex-direction: column;
+  background-color: #cecece; 
+  position: absolute;
+  top: 60px; /* Debajo del header */
+  right: 0;
+  width: 220px;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  font-weight: 600;
+  font-size: 16px;
+  z-index: 1000;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: top right;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav-menu.active,
+.nav-menu.show {
+  display: flex;
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+.nav-menu a {
+  color: #000000; /* Verde claro para el texto */
+  text-decoration: none;
+  margin: 10px 0;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-menu a:hover {
+  background-color: #19a12f; /* Verde neón más brillante al hover */
+  color: #ffffff;
+  cursor: pointer;
+}
+/* Responsive */
+@media (max-width: 600px) {
+  .nav-menu {
+    width: 180px;
+    top: 60px;
+    right: 0;
+    background-color: #0b4d23;
+  }
+}
+
+.menu-toggle {
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #077351;
+}
+
+/* Menú */
+
+
+.menu-header {
+  /* background-color: #28a745;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 15px 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px; */
+  
+    text-align: center;
+   background-color: #28a745;
+   color: white;
+  padding: 15px 20px;
+    font-size: 22px;
+  margin: 12px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  
+}
+
+/* Opciones */
+.opcion {
+  background-color: #f5f5f5;
+  padding: 19px 20px;
+  margin: 12px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.opcion a {
+  text-decoration: none;
+  color: #333;
+  font-size: 19px;
+  font-weight: 500;
+  display: block;
+  text-align: left;
+}
+
+.opcion:hover {
+  background-color: #e0e0e0;
+}
+
+/* Footer fijo abajo */
+.main-footer {
+  background-color: #00932c;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+}

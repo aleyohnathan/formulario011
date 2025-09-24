@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es"> 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ENCABEZADO</title>
+
+  <!-- Hoja de estilo del formulario -->
+  <link rel="stylesheet" href="../style/style_encabezado.css">
+
+  <!-- Script de validación -->
+  <script src="./js/encabezado/index_encabezado.js" type="module" defer></script>
+
+
+</head>
+<body>  
+  <!-- Header principal del sitio -->
+  <header class="main-header">
+    <div class="header-left">
+      <img src="/images/logo-banco-azteca-mob.png" alt="Banco Azteca" class="logoI">
+      <div class="marca">BANCO AZTECA</div>
+    </div>
+
+    <nav class="nav-menu" id="navMenu">
+      <a href="../../index.html">inicio</a>
+      <a href="./traspasos_y_tranferencias.html">Transferencias</a>
+      <a href="./ordenes_de_pago_empresarial.html">Órdenes de pago empresarial</a>
+      <a href="./cancelacion_de_ordenes_de_pago_empresarial.html">Cancelación de órdenes de pago empresaria</a>
+    </nav>
+
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  </header>
+
+  <!-- Contenedor del formulario -->
+  <div class="contenedor-principal">
+
+ <div class="contenedor-izquierdo">
+    <!-- Formulario para capturar los datos del encabezado -->
+    <form class="form-body" onsubmit="return validarFormularioEncabezado(event)">
+      <h2>Paso 2. Encabezado</h2>
+      <p>Ingresa la informacion requerida para crear un archivo .txt</p>
+      <!-- ID Empresa -->
+      <div class="form-group">
+           <label for="idEmpresa2"> <span class="obligatorio">*</span> ID Empresa:</label>
+           <input type="text" id="idEmpresa2" maxlength="9" readonly required class="form-input">
+       </div>
+
+      <!-- Número de cuenta -->
+      <div class="form-group">
+          <label for="cuentaCargo"> <span class="obligatorio">*</span> No. Cuenta cargo:</label>
+          <input type="text" id="cuentaCargo" maxlength="20" placeholder='p.j. "01270172410176403434"' required class="form-input">
+      </div>
+
+      <!-- Usuario -->
+      <div class="form-group">
+          <label for="user"> <span class="obligatorio">*</span> User:</label>
+          <input type="text" id="user" maxlength="20" placeholder='p.j. "H2HPRUEBAS"' required class="form-input">
+      </div>
+
+      <!-- Token -->
+      <div class="form-group">
+          <label for="token"> <span class="obligatorio">*</span> Token:</label>
+          <input type="text" id="token" maxlength="40" placeholder='p.j. "5VTIXY7J"' required class="form-input">
+      </div>
+
+      <!-- Acción a realizar -->
+      <div class="form-group">
+             <label for="idAccion"> <span class="obligatorio">*</span> ID Acción:</label>
+             <select id="idAccion" class="form-input">
+                <option value="0">Selecciona una opción</option>
+                <option value="1">Agendar</option>
+                <option value="2">Autorizar</option> 
+                <option value="3">Enviar</option>
+             </select>
+       </div>
+
+      <!-- Fecha programada -->
+      <div class="form-group">    
+          <label for="fechaProgramada">Fecha Programada:</label>
+          <input type="datetime-local" id="fechaProgramada" onchange="formatearFecha()" class="form-input">
+
+          <!-- Campo oculto con la fecha formateada -->
+          <input type="text" id="fechaFormateada" name="fechaFormateada" style="display: none;">
+        
+      </div>
+
+ 
+
+    
+    </div>
+  
+
+
+      <div class="form-container">      
+      <!-- Vista previa del archivo -->
+      <div class="preview-container">
+        <div class="preview-header">
+             <span class="info-icon" title="Este cuadro muestra una vista previa de la estructura del archivo.">i</span>
+        <h3>Vista previa del encabezado del archivo:</h3>
+        </div>
+        <pre id="previewArchivo" class="preview-box">Aquí se mostrará el diseño de la estructura del encabezado</pre>
+      </div>
+            <div class="form-actions">
+        <button type="submit" id="btnSiguiente">SIGUIENTE</button>
+      </div>
+    </div>
+    
+  </from>
+    </div>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <p>&copy; Canales Digitales H2H</p>
+  </footer>
+</body>
+</html>
