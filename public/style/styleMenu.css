@@ -4,64 +4,69 @@ html, body {
   margin: 0;
   display: flex;
   flex-direction: column;
-    background-color: #efefef;
+  background-color: #efefef;
 }
 
 body {
-  flex: 1; /* Permite al body ocupar todo el alto disponible */
+  flex: 1;
   display: flex;
   flex-direction: column;
 }
 
 main.contenedor {
-  flex: 1; /* Esto hace que el main ocupe el espacio disponible */
-  width: 45%;
-  max-width: 1400px;
+  flex: 1;
+  width: 50%;
+  max-width: 1200px;
   margin: 40px auto;
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
   padding: 36px 20px;
   display: flex;
-  flex-direction: column; /* Si tu contenido interno lo necesita */
+  flex-direction: column;
 }
 
-/* Header */
+/* ===============================
+   🔝 Header
+================================= */
 .main-header {
   display: flex;
-  justify-content: space-between; /* Separa izquierda y derecha */
+  justify-content: space-between;
   align-items: center;
   background-color: #ffffff;
   padding: 15px 20px;
   font-family: 'Roboto', sans-serif;
-   box-shadow: 0 7px 4px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 7px 4px rgba(0, 0, 0, 0.15);
+  flex-wrap: wrap;
 }
 
-
 .marca {
-    font-size: 20px;
-    color: #7a7a7a;
-    font-weight: bold;
-    margin: 0;
+  font-size: 20px;
+  color: #7a7a7a;
+  font-weight: bold;
+  margin: 0;
 }
 
 .logo-img {
   height: 40px;
 }
+
 .header-left {
   display: flex;
   align-items: center;
 }
+
 .header-left img {
-  height: 40px; /* Ajusta según necesites */
+  height: 40px;
   margin-right: 10px;
 }
+
 .nav-menu {
   display: none;
   flex-direction: column;
-  background-color: #cecece; 
+  background-color: #cecece;
   position: absolute;
-  top: 60px; /* Debajo del header */
+  top: 60px;
   right: 0;
   width: 220px;
   padding: 15px 20px;
@@ -85,7 +90,7 @@ main.contenedor {
 }
 
 .nav-menu a {
-  color: #000000; /* Verde claro para el texto */
+  color: #000000;
   text-decoration: none;
   margin: 10px 0;
   padding: 8px 12px;
@@ -94,18 +99,9 @@ main.contenedor {
 }
 
 .nav-menu a:hover {
-  background-color: #19a12f; /* Verde neón más brillante al hover */
+  background-color: #19a12f;
   color: #ffffff;
   cursor: pointer;
-}
-/* Responsive */
-@media (max-width: 600px) {
-  .nav-menu {
-    width: 180px;
-    top: 60px;
-    right: 0;
-    background-color: #0b4d23;
-  }
 }
 
 .menu-toggle {
@@ -116,31 +112,20 @@ main.contenedor {
   color: #077351;
 }
 
-/* Menú */
-
-
+/* ===============================
+   📋 Menú principal
+================================= */
 .menu-header {
-  /* background-color: #28a745;
-  color: white;
   text-align: center;
-  font-weight: bold;
-  font-size: 18px;
-  padding: 15px 0;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px; */
-  
-    text-align: center;
-   background-color: #28a745;
-   color: white;
+  background-color: #28a745;
+  color: white;
   padding: 15px 20px;
-    font-size: 22px;
+  font-size: 22px;
   margin: 12px;
   border-radius: 5px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-  
 }
 
-/* Opciones */
 .opcion {
   background-color: #f5f5f5;
   padding: 19px 20px;
@@ -162,10 +147,74 @@ main.contenedor {
   background-color: #e0e0e0;
 }
 
-/* Footer fijo abajo */
+/* ===============================
+   🔚 Footer
+================================= */
 .main-footer {
   background-color: #00932c;
   color: white;
   text-align: center;
   padding: 20px 0;
+  margin-top: auto;
+}
+
+/* ===============================
+   📱 Responsivo
+================================= */
+
+/* Tablet */
+@media (max-width: 992px) {
+  main.contenedor {
+    width: 95%;
+    padding: 20px 15px;
+  }
+
+  .menu-header {
+    font-size: 20px;
+    padding: 12px;
+  }
+
+  .opcion a {
+    font-size: 17px;
+  }
+}
+
+/* Móvil */
+@media (max-width: 600px) {
+  .main-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .menu-toggle {
+    align-self: flex-end;
+  }
+
+  .nav-menu {
+    position: static;
+    width: 100%;
+    border-radius: 0;
+    padding: 15px;
+    background-color: #0b4d23;
+  }
+
+  main.contenedor {
+    width: 100%;
+    margin: 20px 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .menu-header {
+    margin: 8px 0;
+  }
+
+  .opcion {
+    margin: 8px 0;
+  }
+
+  .opcion a {
+    font-size: 16px;
+  }
 }
