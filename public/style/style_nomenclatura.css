@@ -8,15 +8,18 @@ html, body {
   background-color: #efefef;
 }
 
-
+/* ===============================
+   🔝 Header
+================================= */
 .main-header {
   display: flex;
-  justify-content: space-between; /* Separa izquierda y derecha */
+  justify-content: space-between;
   align-items: center;
   background-color: #ffffff;
   padding: 15px 20px;
   font-family: 'Roboto', sans-serif;
-   box-shadow: 0 7px 4px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 7px 4px rgba(0, 0, 0, 0.15);
+  flex-wrap: wrap; /* Para móviles */
 }
 
 .header-left {
@@ -25,8 +28,15 @@ html, body {
 }
 
 .header-left img {
-  height: 40px; /* Ajusta según necesites */
+  height: 40px;
   margin-right: 10px;
+}
+
+.marca {
+  font-size: 20px;
+  color: #7a7a7a;
+  font-weight: bold;
+  margin: 0;
 }
 
 .nav-menu {
@@ -34,7 +44,7 @@ html, body {
   flex-direction: column;
   background-color: #cecece; 
   position: absolute;
-  top: 60px; /* Debajo del header */
+  top: 60px;
   right: 0;
   width: 270px;
   padding: 30px 25px;
@@ -58,7 +68,7 @@ html, body {
 }
 
 .nav-menu a {
-  color: #000000; /* Verde claro para el texto */
+  color: #000000;
   text-decoration: none;
   margin: 10px 0;
   padding: 8px 12px;
@@ -67,7 +77,7 @@ html, body {
 }
 
 .nav-menu a:hover {
-  background-color: #19a12f; /* Verde neón más brillante al hover */
+  background-color: #19a12f;
   color: #ffffff;
   cursor: pointer;
 }
@@ -77,7 +87,7 @@ html, body {
   background: none;
   border: none;
   cursor: pointer;
-  color: #0b4d23; /* Mismo verde fuerte para el botón */
+  color: #0b4d23;
   transition: color 0.3s ease;
 }
 
@@ -85,62 +95,39 @@ html, body {
   color: #19a12f;
 }
 
-
-/* Responsive */
-@media (max-width: 600px) {
-  .nav-menu {
-    width: 180px;
-    top: 60px;
-    right: 0;
-    background-color: #0b4d23;
-  }
-}
-
-.marca {
-    font-size: 20px;
-    color: #7a7a7a;
-    font-weight: bold;
-    margin: 0;
-}
-
-
+/* ===============================
+   📦 Contenido principal
+================================= */
 .contenedor-principal {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   gap: 20px;
-    position: relative;
+  position: relative;
 }
 
-/* Contenedor izquierdo (Formulario) */
+/* Izquierda (formulario) */
 .contenedor-izquierdo {
-  width: 50%;               /* Ancho del contenedor izquierdo (ajústalo según prefieras) */
-  padding: 40px;            /* Espacio interno: controla qué tan "separado" está el contenido de sus bordes */
-
-  margin-top: 0px;          /* Qué tan separado queda desde la parte superior */
-  margin-left: 0px;         /* Qué tan separado queda desde la izquierda */
-  /* Usa margin-right o margin-bottom si necesitas moverlo hacia otros lados */
-  
-
+  flex: 1 1 50%;
+  padding: 20px;
 }
 
-/* Contenedor derecho (Vista previa) */
+/* Derecha (vista previa) */
 .form-container {
-  width: 56%;               /* Ancho del contenedor derecho */
-  padding: 15px;            /* Espacio interno para controlar el contenido */
-
-  margin-top: 110px;          /* Qué tan abajo o arriba se ubica */
-  margin-right: 0px;        /* Qué tan separado queda del borde derecho */
+  flex: 1 1 50%;
+  padding: 20px;
+  margin-top: 40px;
 }
 
-
+/* ===============================
+   📝 Formularios
+================================= */
 .form-group {
   background-color: #ffffff;
   padding: 20px 25px;
   border-radius: 8px;
   box-shadow: 0 7px 4px rgba(0, 0, 0, 0.15);
   margin-bottom: 20px;
-  
 }
 
 .form-label {
@@ -166,60 +153,45 @@ html, body {
   box-shadow: 0 0 0 1px #1a73e8;
 }
 
-
-
 .form-actions {
   display: flex;
-  justify-content: flex-end; /* Envía el botón a la derecha */
+  justify-content: flex-end;
   align-items: center;
-  margin-top: 20px;          /* Opcional: para separar del campo anterior */
-  
+  margin-top: 20px;
 }
+
 .form-actions button {
-  margin: 0;  /* Asegura que no haya empuje hacia la derecha */
+  margin: 0;
 }
 
 button[type="submit"] {
   background-color: #00932c;
   color: white;
   border: none;
-  padding: 10px 24px;
+  padding: 12px 24px;
   border-radius: 20px;
   font-size: 14px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-
-    width: 25%;               /* Ancho del contenedor derecho */
-  padding: 10px;            /* Espacio interno para controlar el contenido */
-
-  margin-top: 390px;          /* Qué tan abajo o arriba se ubica */
-  margin-right: 0px;        /* Qué tan separado queda del borde derecho */
-  
 }
 
-
-
-
-.main-footer {
-  background-color: #00932c;
-  color: white;
-  text-align: center;
-  padding: 15px 0;
+button[type="submit"]:hover {
+  background-color: #19a12f;
 }
 
-
-
-
+/* ===============================
+   📋 Vista previa
+================================= */
 .preview-container {
   margin-top: 40px;
   padding: 15px 20px;
   background-color: #ffffff;
   border: 1px solid #ccc;
   border-radius: 8px;
-  width: 85%;
+  width: 100%;
   max-width: 600px;
+  border-bottom: 3px solid #00932c;
 }
-
 
 .preview-box {
   font-family: monospace;
@@ -227,39 +199,36 @@ button[type="submit"] {
   padding: 10px;
   border-radius: 4px;
   border: 1px solid #dadce0;
-  white-space: pre;           /* mantiene los espacios y saltos de línea */
-  overflow-x: auto;           /* scroll horizontal si es necesario */
-  overflow-y: auto;           /* scroll vertical si excede la altura */
+  white-space: pre;
+  overflow-x: auto;
+  overflow-y: auto;
   display: block;
-  width: 490px;               /* ancho fijo o ajústalo según lo necesites */
-  max-height: 600px;          /* altura máxima que deseas */
+  width: 100%;
+  max-height: 600px;
 }
 
-
+/* ===============================
+   🔖 Detalles extra
+================================= */
 .obligatorio {
   color: red;
   font-weight: bold;
 }
 
-
 .leyenda {
-      font-size: 14px;
-      color: #555;
-      margin-top: 5px;
-    }
-    .leyenda ul {
-      margin: 5px 0 0 20px;
-    }
-        .form-linea {
-      display: block;
-      margin-bottom: 10px;
-      width: 470px;
-    }
-
-    .preview-container {
-    border-bottom: 3px solid #00932c;
+  font-size: 14px;
+  color: #555;
+  margin-top: 5px;
+}
+.leyenda ul {
+  margin: 5px 0 0 20px;
 }
 
+.form-linea {
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+}
 
 .preview-header {
   display: flex;
@@ -286,4 +255,51 @@ button[type="submit"] {
 .info-icon:hover {
   background-color: #4CAF50;
   color: #ffffff;
+}
+
+/* ===============================
+   🔚 Footer
+================================= */
+.main-footer {
+  background-color: #00932c;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  margin-top: auto;
+}
+/* ===============================
+   📱 Responsivo
+================================= */
+
+/* Tablet */
+@media (max-width: 992px) {
+  .contenedor-principal {
+    flex-direction: row;   /* Mantiene 2 columnas */
+    flex-wrap: wrap;       /* Permite que bajen si no cabe */
+  }
+
+  .contenedor-izquierdo,
+  .form-container {
+    flex: 1 1 100%;
+    min-width: 45%;        /* Así siguen en columnas si cabe */
+  }
+}
+
+/* Móvil */
+@media (max-width: 600px) {
+  .contenedor-principal {
+    flex-direction: column; /* En móvil sí 1 sola columna */
+  }
+
+  .contenedor-izquierdo,
+  .form-container {
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px;
+  }
+
+  .preview-box {
+    width: 100%;
+    max-width: 100%;
+  }
 }
