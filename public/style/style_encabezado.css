@@ -170,28 +170,27 @@ button[type="submit"]:hover {
     Vista previa
 ================================= */
 .preview-container {
-  margin-top: 65px;
-  padding: 15px 20px;
+  margin-top: 85px;
+  padding: 15px 50px;
   background-color: #ffffff;
   border: 1px solid #ccc;
   border-radius: 8px;
-  width: 100%;
+  width: 85%;
   max-width: 600px;
-  border-bottom: 3px solid #00932c;
 }
 
 .preview-box {
   font-family: monospace;
   background-color: #f9f9f9;
-  padding: 6px;
+  padding: 10px;
   border-radius: 4px;
   border: 1px solid #dadce0;
-  white-space: pre;
-  overflow-x: auto;
-  overflow-y: auto;
+  white-space: pre;           /* mantiene los espacios y saltos de línea */
+  overflow-x: auto;           /* scroll horizontal si es necesario */
+  overflow-y: auto;           /* scroll vertical si excede la altura */
   display: block;
-  width: 100%;
-  max-height: 600px;
+  width: 590px;               /* ancho fijo o ajústalo según lo necesites */
+  max-height: 600px;          /* altura máxima que deseas */
 }
 
 .preview-header {
