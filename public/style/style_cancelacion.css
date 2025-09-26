@@ -217,15 +217,23 @@ html, body {
 
 
 .preview-container {
-  margin-top: 40px;
-  padding: 15px 20px;
+  margin-top: 20px;
+  padding: 15px 50px;
   background-color: #ffffff;
   border: 1px solid #ccc;
   border-radius: 8px;
   width: 85%;
   max-width: 600px;
 }
-
+.preview-container2 {
+  margin-top: 40px;
+  padding: 15px 50px;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 85%;
+  max-width: 600px;
+}
 .preview-box {
   font-family: monospace;
   background-color: #f9f9f9;
@@ -236,7 +244,7 @@ html, body {
   overflow-x: auto;           /* scroll horizontal si es necesario */
   overflow-y: auto;           /* scroll vertical si excede la altura */
   display: block;
-  width: 490px;               /* ancho fijo o ajústalo según lo necesites */
+  width: 590px;               /* ancho fijo o ajústalo según lo necesites */
   max-height: 600px;          /* altura máxima que deseas */
 }
 

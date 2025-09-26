@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: formulario011
+    name: formulario
     env: node
     buildCommand: npm install && npm run build
     startCommand: node server.js
